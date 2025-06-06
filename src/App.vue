@@ -1,85 +1,63 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+import NavBar from './components/NavBar.vue'
+import FooterBar from './components/FooterBar.vue'
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header>
-
-  <RouterView />
+  <div id="app">
+    <NavBar />
+    <main class="content">
+      <router-view />
+    </main>
+    <FooterBar />
+  </div>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
+<style>
+/* Import font yang lebih gloomy atau klasik */
+/* @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap'); */
+/* Playfair Display untuk judul, Roboto Mono untuk body text */
+/* Atau cari font sketchy dari Google Fonts */
+
+body {
+  margin: 0;
+  font-family: 'Roboto Mono', monospace; /* Contoh font monospace untuk kesan dingin */
+  background-color: #1a1a1a; /* Background sangat gelap */
+  color: #b0b0b0; /* Teks abu-abu terang */
+  line-height: 1.6;
+  overflow-x: hidden; /* Hindari scroll horizontal */
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
+#app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  /* Tambahkan efek background halus kalau mau, misalnya noise texture */
+  background-image: url('data:image/svg+xml;base64,PHN2ZyB2aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc2ZnIj4KICA8ZmlsdGVyIGlkPSJuIiB4PSIwIiB5PSIwIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIj4KICAgIDxmZVR1cmJ1bGVuY2UgdHlwZT0iZnJhY3RhbE5vaXNlIiBiYXNlRnJlcXVlbmN5PSIwLjciIG51bU9jdGF2ZXM9IjIiIHNlZWQ9IjAiIHN0aXRjaFRpbGVzPSJub1N0aXRjaCIvPgogICAgPGZlQ29sb3JNYXRyaXggdHlwZT0ic2F0dXJhdGUiIHZhbHVlcz0iMCIvPgogICAgPGZlQ29sb3JNYXRyaXggdHlwZT0ibHVtaW5hbmNlVG9AlphaIiB2YWx1ZXM9IjAiLz4KICAgIDxmZUNvbXBvc2l0IGluM090aGVyPSJTb3VyY2VBbHBoYSIgb3BlcmF0b3I9ImluIiByZXN1bHQ9ImFscGhhIi8+CiAgICA8ZmVDb21wb3NpdGUgaW49IkFsaDoiIGluMj0iU291cmNlQWxwaGEiIG9wZXJhdG9yPSJhdG9wIiByZXN1bHQ9InN0cmluZyIvPgogICAgPGZlU291cmNlR3JhcGhpYyBhbHBoYS1wcmV2ZW50cz0iYnVpbHRJbiIvPgogICAgPGZlQ29sb3JNYXRyaXggdHlwZT0ic2F0dXJhdGUiIHZhbHVlcz0iMCIvPgogIDwvZmlsdGVyPgogIDxyZWN0IHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiBmaWxsPSIjYjBiMGIwIiBmaWx0ZXI9InVybCgjbikiLz4KPC9zdmc+'); /* Contoh noise texture SVG */
+  background-size: 200px 200px;
+  background-repeat: repeat;
 }
 
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
+.content {
+  flex-grow: 1;
+  padding: 30px 20px; /* Padding lebih besar */
+  max-width: 900px; /* Batasi lebar konten */
+  margin: 0 auto;
+  position: relative; /* Untuk z-index jika ada efek overlay */
 }
 
-nav a.router-link-exact-active {
-  color: var(--color-text);
+/* Scrollbar styling (opsional, untuk kesan lebih dark) */
+::-webkit-scrollbar {
+  width: 8px;
 }
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
+::-webkit-scrollbar-track {
+  background: #2a2a2a;
 }
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
+::-webkit-scrollbar-thumb {
+  background: #555;
+  border-radius: 4px;
 }
-
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
+::-webkit-scrollbar-thumb:hover {
+  background: #777;
 }
 </style>
